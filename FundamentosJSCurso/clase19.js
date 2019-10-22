@@ -40,9 +40,6 @@ var personas = [vicky,juan,pedro,pepito]
 var personasAltas = personas.filter(esAlta)
 var personasBajas = personas.filter(esBaja)
 
-console.log(personasAltas)
-console.log(personasBajas)
-
 //Similar
 
 // var personasAltas = personas.filter(function (persona){
@@ -50,3 +47,21 @@ console.log(personasBajas)
 // }) 
 
 // console.log(personasAltas)
+
+
+//console.log(personasAltas)
+//console.log(personasBajas)
+
+const pasarAlturaACms = persona => ({
+   //Nuevo objeto del array original
+        ...persona,
+        altura:   persona.altura * 100
+
+})
+
+//Devolvernos un nuevo array modificando cada uno de los elementos de este
+var personasCms = personas.map(pasarAlturaACms)
+
+console.log(personasCms)
+
+
