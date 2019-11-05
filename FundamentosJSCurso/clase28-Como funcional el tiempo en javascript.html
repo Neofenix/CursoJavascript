@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Clase 28</title>
+  </head>
+  <body>
+    <script>
+
+      //Ejecuta log.(a), ejecuta el settimeout (le dice js al navegador que la ejecuta en 0 segundos pero primero la agrega en la cola de tareas hasta que se ejecute las demas funciones principales ("console.log(c)"")), 
+      //continua con console.log(c) y despues si ejecuta el settimeout de eventpool
+
+      // console.log('a')
+      // setTimeout(()=>console.log('b'),0)
+      // console.log('c')
+
+
+      //Va a tomar mas de dos segundos para ejecutar el settimeout en este punto(Se bloque el eventloop), ya que primero se ejecuta el for que tiene un loop muy grande
+      setTimeout(()=>console.log('d'),2000)
+      for(var i=0; i< 10000000000; i++){
+
+      }
+      </script>
+  </body>
+</html>
