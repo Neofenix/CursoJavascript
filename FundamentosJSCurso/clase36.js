@@ -28,9 +28,24 @@ function obtenerUnaPersona (id){
     }
 
 
+
+///Sea solo para una promesa o para un array de promesas, el async-await se utiliza, si entendí bien, así:
+//await para la variable en donde queremos que la data (en el caso de que la promesa sea fullfilled) se guarde, en nuestro caso es los objetos personaje 
+//que queremos obtener de manera asíncrona, 
+//y la palabra async se utiliza el la nomenclatura de la función 
+//que va a ejecutar la tarea asíncrona, en este caso obtenerPersonajes.
+
+async function obtenerPersonajes(){   //Para utilziar away debemos marcar la funcion async
     var ids= [1, 2, 3, 4, 5, 6, 7]
     var  promesas = ids.map(id=>obtenerUnaPersona(id))
-    Promise
-    .all(promesas)
-    .then(personajes=>console.log(personajes))
-    .catch(onError)
+    try{
+        var personajes = await Promise.all(promesas)   //await -> detener la ejecucion de nuestro codigo hasta que todas las promesas sean resultas y despues si se va a almancenar en la variable 
+        console.log(personajes)
+    }catch(id){
+        onError(id)
+
+    }
+} 
+
+
+obtenerPersonajes()

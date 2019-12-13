@@ -28,7 +28,7 @@ function obtenerUnaPersona (id){
     }
 
     //Funcion que se pasa y se ejecuta en el then cuando la promesa se resuelva
-    //coloco return en el primer then y despues encadeno con otro then para ejecutar la funcion cuando se resulva promesa
+    //coloco return en el primer then y despues encadeno con otro then para ejecutar la funcion cuando se resulva la promesa
     // y asi sucesivamente
     obtenerUnaPersona(1)
     .then(personaje1=>{
