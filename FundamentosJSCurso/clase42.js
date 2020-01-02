@@ -1,27 +1,29 @@
-//Un closure, básicamente, es una función que recuerda el estado de las variables al momento de ser invocada, 
-//y conserva este estado a través de reiteradas ejecuciones. 
-//Un aspecto fundamental de los closures es que son funciones que retornan otras funciones.
+//Las estructuras de datos inmutables forman parte de los principios de la Programación Funcional 
+//y nos permiten evitar tener efectos colaterales en los datos. En otras palabras, 
+//que hayan modificaciones en las variables sin nuestro consentimiento, 
+//produciendo comportamientos inesperados en el programa
 
 
-function crearSaludo(finalDeFrase){   //Primera funcion es creador o generadora de otras funciones
-    return function(nombre){          //Funcion anonima
-        console.log(`Hola ${nombre} ${finalDeFrase}`) //Esta funcion recuerda la variable finalDeFrase
-    }
+const juan = {
+    nombre: 'Juan',
+    apellido: 'Perez',
+    edad: 30
 }
 
-const saludoArgentino = crearSaludo('che');
-const saludoMexicano = crearSaludo('güey');
-const saludoColombiano = crearSaludo('amigo');
-
-saludoArgentino('Pepito') //hOLA Pepito che
-saludoMexicano('Olga'); //Hola olga wey
-saludoColombiano('Juan');  //Hola Juan amigo
+const cumpleanos = persona => persona.edad ++
 
 
-//const saludar = finalDeFrase => nombre => console.log(`Hola ${nombre} de ${pais}`);
-//const saludarMexicanos = saludar("México"); // nombre => console.log(...)
-//saludarMexicanos("Luis");  // Hola Luis de México
+//Hacemos cumpleaños(juan) en consola y nos modifca la edad en el objeto, a veces no queremos eso.
+//Por eso definimos un objeto inmutable para eso
 
+const cumpleanosInmutable = persona => ({   //Recibe una persona y nos devuelve un objeto de javascript
+    ...persona,
+    edad: persona.edad++
+})
 
-//saludar("Argentina")("Sacha");  // Hola Sacha de Argentina
-//saludar("México")("Ángel");
+//juan
+//{nombre: "Juan", apellido: "Perez", edad: 30}
+//cumpleanosInmutable(juan)
+//{nombre: "Juan", apellido: "Perez", edad: 30}
+//juan
+//{nombre: "Juan", apellido: "Perez", edad: 31}

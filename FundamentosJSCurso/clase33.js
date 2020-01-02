@@ -16,8 +16,7 @@ function obtenerUnaPersona (id){
         const url = `${API_URL}${PEOPLE_URL.replace(':id', id)}`
 
         //La funcion resolve no se va a llamar hasta que el get sea exitoso
-        $
-        .get(url, opst, function(data){
+        $.get(url, opst, function(data){
             resolve(data)
         }).fail(()=>reject(id))
         }))
